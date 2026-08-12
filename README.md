@@ -163,6 +163,19 @@ Medido nas 263 janelas dos três demos, decimando 64 → 32 Hz: `snap_fraction`
 `net_disp` 1,00x. A invariância do `path_ratio` vale em toda a faixa de
 deslocamento, de <2° a >45°.
 
+**Provenência destes números.** Vêm de `yaw`/`pitch` reais lidos por
+demoparser2 e decimados na própria janela — mesma trajetória, metade das
+amostras. Nenhum passa por `src/synthetic.py`, e nenhum teste de
+`test_sampling_invariance.py` importa aquele módulo: ele define sua própria
+trajetória em tempo contínuo e importa só `extract_window`. Portanto o
+defeito de grade que `synthetic.py` teve (documentado no cabeçalho daquele
+arquivo) **não contamina esta tabela**; os valores foram reproduzidos sem
+alteração depois da correção do gerador. A distinção importa porque o
+argumento sobre `snap_fraction` tem duas partes com estatuto diferente: a
+direção é analítica (passo único cresce se o passo cobre mais tempo, e a
+feature é O(`dt`)), o fator 1,69x é empírico e vale para 64→32 Hz nesta
+amostra — não é constante universal e não se extrapola para 64→128.
+
 Cuidado com a explicação errada: `path_ratio` **não** é invariante por ser
 razão. A discretização encurta o caminho (numerador) e não mexe na distância
 líquida (denominador), então a razão não se protege sozinha. Ela sobrevive
