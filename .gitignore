@@ -1,0 +1,7 @@
+data/
+out/
+.venv/
+__pycache__/
+*.dem
+*.dem.bz2
+*.parquet

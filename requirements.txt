@@ -1,0 +1,4 @@
+awpy>=2.0.2
+polars>=1.0
+numpy>=1.26
+pytest>=8.0
