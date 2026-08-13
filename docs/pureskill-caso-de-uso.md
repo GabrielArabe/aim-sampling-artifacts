@@ -62,5 +62,12 @@ support. I understand standard AWS transfer costs apply.
 - O parágrafo sobre auditoria de grade não é diplomacia: é o gate real. Se
   A1/A2 reprovarem, o dado deles não serve para este estudo e o certo é
   dizer isso a eles.
-- Não prometi prazo nem coautoria. Se quiser oferecer atribuição ou
-  compartilhar resultados de volta, acrescente — pode ajudar na aprovação.
+- Não prometi prazo. **Não ofereça coautoria** — eu havia levantado isso
+  como possível ajuda na aprovação e estava errado. Coautoria é obrigação
+  de verdade: revisão, direito de veto sobre o texto, e depois o desconforto
+  de publicar resultado que possa não agradar a quem forneceu o dado. Num
+  estudo cuja contribuição pode ser justamente um resultado negativo, isso
+  é um risco editorial real.
+- O que dá para oferecer sem se amarrar já está no texto: **atribuição da
+  fonte** e **uma cópia do resultado antes da publicação**. É generoso,
+  honesto e não cria direito de veto.

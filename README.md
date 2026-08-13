@@ -158,10 +158,21 @@ Dois modos de falha, e vale distinguir ao classificar:
   corrigível, mas exige conhecer o espectro do movimento real, que ninguém
   mediu.
 
-Medido nas 263 janelas dos três demos, decimando 64 → 32 Hz: `snap_fraction`
-1,69x, `n_peaks` 0,57x, `peak_speed` 0,84x, contra `path_ratio` 0,99x e
-`net_disp` 1,00x. A invariância do `path_ratio` vale em toda a faixa de
-deslocamento, de <2° a >45°.
+Medido nas 263 **janelas de kill** dos três demos, decimando 64 → 32 Hz, como
+razão das medianas: `snap_fraction` 1,69x, `n_peaks` 0,57x, `peak_speed`
+0,84x, contra `path_ratio` 0,99x e `net_disp` 1,00x. A invariância do
+`path_ratio` vale em toda a faixa de deslocamento, de <2° a >45°.
+
+Dois cuidados ao comparar estes números com os de `src/grid_audit.py`, que
+parecem os mesmos e não são:
+
+- **População de janelas.** Aqui são janelas de kill (263). Lá são janelas
+  amostradas do fluxo de ticks (~4.500), que incluem períodos parados e têm
+  medianas diferentes — `n_peaks`, por exemplo, dá 0,57x aqui e 0,33x lá.
+- **Estimador.** Ambos são razão das medianas. O estimador pareado (mediana
+  das razões janela a janela) dá 1,74 / 0,56 / 0,86 / 0,99 nas janelas de
+  kill. É o estimador mais defensável — cada janela é seu próprio controle —
+  e a conclusão não muda, mas os números sim.
 
 **Provenência destes números.** Vêm de `yaw`/`pitch` reais lidos por
 demoparser2 e decimados na própria janela — mesma trajetória, metade das

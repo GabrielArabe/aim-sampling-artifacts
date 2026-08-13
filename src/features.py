@@ -34,7 +34,9 @@ jogador nem em modelo. Ver tests/test_sampling_invariance.py.
 
     n_peaks conta máximos locais da velocidade AMOSTRADA, e em mira real a
     contagem acompanha a taxa de amostragem: 7.0 a 64 Hz contra 4.0 a 32 Hz
-    nas 263 janelas dos três demos, ou seja 0.57x para metade da taxa. Está
+    nas 263 janelas DE KILL dos três demos (razão das medianas; janelas
+    amostradas do fluxo de ticks dão 0.33x -- ver README), ou seja 0.57x
+    para metade da taxa nesta população de janelas. Está
     medindo a grade, não submovimento. O sintoma já era visível antes do
     teste de decimação: mediana de 7.5 picos numa janela de 750 ms é um a
     cada 100 ms, e correção sob feedback visual tem latência de 100-200 ms,
