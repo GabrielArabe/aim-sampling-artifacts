@@ -1,6 +1,7 @@
 # Três resultados negativos e um limite estrutural ao tentar medir mira humana em CS2
 
-*Rascunho. Números de n=3 demos de matchmaking; ver "Limitações" no fim.*
+*12 de agosto de 2026. Números de n=3 demos de matchmaking; ver
+"Limitações" no fim.*
 
 > **Este arquivo é a fonte editável.** `docs/index.html` é a versão
 > renderizada que o GitHub Pages serve. Editar um sem o outro faz os dois

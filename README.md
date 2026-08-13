@@ -6,7 +6,7 @@ partir de demos GOTV, com um critério de admissibilidade de feature e uma
 bateria de auditoria de grade que valem fora de jogos.
 
 **Escrito:** [Três resultados negativos e um limite estrutural ao tentar medir
-mira humana em CS2](https://gabrielarabe.github.io/aim-sampling-artifacts/) ([fonte](docs/post-rascunho.md)). Features que mediam a taxa de
+mira humana em CS2](https://gabrielarabe.github.io/aim-sampling-artifacts/) ([fonte](docs/post.md)). Features que mediam a taxa de
 amostragem em vez do comportamento, um gerador sintético cuja física mudava
 com `dt`, contaminação que come a cauda por construção, e por que o tamanho
 do efeito é escolha do adversário e não parâmetro da natureza.
