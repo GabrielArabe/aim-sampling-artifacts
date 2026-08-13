@@ -318,5 +318,5 @@ Nada neste texto identifica jogador, e não deve ser usado para isso.
 
 ---
 
-*Código e testes: [link do repositório]. Todo número tem teste; a bateria de
-aceitação e suas bandas são abertas.*
+*Código e testes: <https://github.com/GabrielArabe/aim-sampling-artifacts>. Todo número tem teste; a bateria de aceitação e suas
+bandas são abertas. Código sob MIT, este texto sob CC BY 4.0.*

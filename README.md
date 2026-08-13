@@ -1,10 +1,12 @@
-# cs2-aim-forensics
+# aim-sampling-artifacts
 
-Caracterização da assinatura cinemática da mira humana em Counter-Strike 2,
-a partir de demos GOTV.
+Quando uma feature comportamental mede a taxa de amostragem em vez do
+comportamento. Estudo de caso em cinemática de mira no Counter-Strike 2, a
+partir de demos GOTV, com um critério de admissibilidade de feature e uma
+bateria de auditoria de grade que valem fora de jogos.
 
 **Escrito:** [Três resultados negativos e um limite estrutural ao tentar medir
-mira humana em CS2](docs/post-rascunho.md). Features que mediam a taxa de
+mira humana em CS2](https://gabrielarabe.github.io/aim-sampling-artifacts/) ([fonte](docs/post-rascunho.md)). Features que mediam a taxa de
 amostragem em vez do comportamento, um gerador sintético cuja física mudava
 com `dt`, contaminação que come a cauda por construção, e por que o tamanho
 do efeito é escolha do adversário e não parâmetro da natureza.
@@ -279,7 +281,15 @@ e nada além disso. Só a baseline já é uma contribuição, e é verificável 
 que é mais do que se pode dizer da maioria das afirmações públicas sobre
 detecção de cheat.
 
-## Licença / escopo ético
+## Licença
+
+Código (, ) sob **MIT**. Texto () sob **CC BY 4.0**.
+A separação é proposital: o código deve ser reutilizável sem atrito, e a
+análise escrita deve continuar atribuível, porque atribuição é o que permite
+rastrear uma afirmação até a amostra de onde ela saiu. Vários números do
+texto são medições ilustrativas de três partidas, não constantes.
+
+## Escopo ético
 
 Ferramenta de análise de demos públicos. Não interage com o cliente do jogo,
 não lê memória, não roda junto com o CS2. Um resultado aqui é uma hipótese
