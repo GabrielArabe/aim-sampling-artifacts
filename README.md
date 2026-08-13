@@ -235,8 +235,12 @@ latência de ~100-200 ms.
    mas 0 não é nunca.
 5. **Nome como chave de junção.** As janelas casam por `steamid`, não por
    `name`. Nick não é chave: muda no meio da partida, repete entre
-   jogadores, e o nick do demo de teste tem unicode fora do BMP
-   (`um nick com hieróglifo 𓂀`) que nem todo caminho de I/O preserva.
+   jogadores, e um dos nicks do demo de teste contém um hieróglifo egípcio,
+   ou seja unicode fora do BMP (par substituto em UTF-16), que nem todo
+   caminho de I/O preserva. O nick em si não vai para cá, e nenhum
+   identificador de jogador deve entrar neste repositório: qualquer análise
+   por jogador usa `steamid` em memória e pseudônimo com hash salgado em
+   qualquer saída.
 
 ## Armadilhas ainda ABERTAS
 
