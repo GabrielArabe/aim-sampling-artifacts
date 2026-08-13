@@ -1,0 +1,401 @@
+<!-- Página publicada. FONTE EDITÁVEL: docs/post-rascunho.md.
+     Este arquivo é a versão renderizada; edite o .md e regenere, senão os
+     dois divergem em silêncio. -->
+<title>Três resultados negativos e um limite estrutural ao tentar medir mira humana em CS2</title>
+<style>
+  :root {
+    --ground:        #F6F8FA;
+    --surface:       #FFFFFF;
+    --ink:           #141C25;
+    --ink-muted:     #58697C;
+    --ink-faint:     #8496A8;
+    --rule:          #D7DFE7;
+    --rule-soft:     #E7EDF3;
+    --accent:        #2C5F8C;
+    --accent-soft:   #E8F0F7;
+    --flag:          #9A4634;
+    --flag-soft:     #F7EAE6;
+    --grid-line:     rgba(44, 95, 140, 0.10);
+
+    --sans: "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    --serif: Georgia, "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+    --mono: ui-monospace, "SF Mono", "Cascadia Mono", "Segoe UI Mono", Consolas, "Liberation Mono", monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:      #111720;
+      --surface:     #171F29;
+      --ink:         #DCE4EC;
+      --ink-muted:   #94A5B6;
+      --ink-faint:   #6C7E90;
+      --rule:        #2A3540;
+      --rule-soft:   #212B35;
+      --accent:      #7FB2DE;
+      --accent-soft: #1B2836;
+      --flag:        #D28B76;
+      --flag-soft:   #2C2020;
+      --grid-line:   rgba(127, 178, 222, 0.09);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground:      #111720;
+    --surface:     #171F29;
+    --ink:         #DCE4EC;
+    --ink-muted:   #94A5B6;
+    --ink-faint:   #6C7E90;
+    --rule:        #2A3540;
+    --rule-soft:   #212B35;
+    --accent:      #7FB2DE;
+    --accent-soft: #1B2836;
+    --flag:        #D28B76;
+    --flag-soft:   #2C2020;
+    --grid-line:   rgba(127, 178, 222, 0.09);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 18px;
+    line-height: 1.68;
+    margin: 0;
+    padding: 0 1.25rem 6rem;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 43rem; margin: 0 auto; }
+
+  /* ---- masthead: sampling-grid texture, the subject of the piece ---- */
+  header.masthead {
+    margin: 0 -1.25rem 3.5rem;
+    padding: 4.5rem 1.25rem 3rem;
+    border-bottom: 1px solid var(--rule);
+    background-image:
+      repeating-linear-gradient(to right, var(--grid-line) 0 1px, transparent 1px 34px),
+      repeating-linear-gradient(to bottom, var(--grid-line) 0 1px, transparent 1px 34px);
+    background-position: center top;
+  }
+  header.masthead > .wrap { display: flex; flex-direction: column; gap: 1.4rem; }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0;
+  }
+
+  h1 {
+    font-family: var(--sans);
+    font-weight: 650;
+    font-size: clamp(2rem, 5.2vw, 2.9rem);
+    line-height: 1.12;
+    letter-spacing: -0.021em;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  .standfirst {
+    font-size: 1.09rem;
+    color: var(--ink-muted);
+    margin: 0;
+    max-width: 34rem;
+  }
+
+  h2 {
+    font-family: var(--sans);
+    font-weight: 640;
+    font-size: 1.42rem;
+    line-height: 1.25;
+    letter-spacing: -0.014em;
+    text-wrap: balance;
+    margin: 0;
+    padding-top: 0.4rem;
+  }
+
+  h3 {
+    font-family: var(--sans);
+    font-weight: 640;
+    font-size: 1.06rem;
+    letter-spacing: -0.006em;
+    text-wrap: balance;
+    margin: 0;
+    color: var(--ink);
+  }
+
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+    padding: 2.9rem 0 0;
+  }
+  section + section { border-top: 1px solid var(--rule-soft); margin-top: 0.6rem; }
+
+  p { margin: 0; }
+  p + p { margin-top: -0.1rem; }
+
+  strong { font-weight: 700; color: var(--ink); }
+
+  a { color: var(--accent); text-underline-offset: 0.16em; }
+
+  ul, ol { margin: 0; padding-left: 1.35rem; display: flex; flex-direction: column; gap: 0.7rem; }
+  li { padding-left: 0.15rem; }
+
+  code {
+    font-family: var(--mono);
+    font-size: 0.855em;
+    background: var(--accent-soft);
+    color: var(--ink);
+    padding: 0.1em 0.36em;
+    border-radius: 3px;
+  }
+
+  pre {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    line-height: 1.6;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--accent);
+    padding: 1rem 1.1rem;
+    margin: 0;
+    overflow-x: auto;
+  }
+  pre code { background: none; padding: 0; font-size: inherit; }
+
+  .tablewrap { overflow-x: auto; border: 1px solid var(--rule); background: var(--surface); }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    font-family: var(--mono);
+    font-size: 0.83rem;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.5;
+  }
+  thead th {
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.72rem 0.9rem;
+    white-space: nowrap;
+  }
+  tbody td { padding: 0.62rem 0.9rem; border-bottom: 1px solid var(--rule-soft); vertical-align: top; }
+  tbody tr:last-child td { border-bottom: none; }
+  td:first-child, th:first-child { font-family: var(--sans); }
+  .num { text-align: right; white-space: nowrap; }
+
+  .chip {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.14em 0.5em;
+    border-radius: 2px;
+    background: var(--flag-soft);
+    color: var(--flag);
+    border: 1px solid currentColor;
+    white-space: nowrap;
+  }
+
+  .callout {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--flag);
+    padding: 1.05rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    font-size: 0.97rem;
+  }
+
+  footer.colophon {
+    margin-top: 3.4rem;
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--rule);
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    line-height: 1.65;
+    color: var(--ink-faint);
+  }
+
+  .draftnote {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+    margin: 0;
+  }
+
+  @media (max-width: 640px) {
+    body { font-size: 17px; }
+    header.masthead { padding-top: 3rem; }
+  }
+</style>
+
+<header class="masthead">
+  <div class="wrap">
+    <p class="eyebrow">Rascunho &middot; cs2-aim-forensics</p>
+    <h1>Três resultados negativos e um limite estrutural ao tentar medir mira humana em CS2</h1>
+    <p class="standfirst">Números de n=3 demos de matchmaking. Ver &ldquo;Limitações&rdquo; no fim.</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section style="padding-top:0">
+    <p>Comecei querendo caracterizar a assinatura cinemática da mira humana em Counter-Strike 2: a distribuição da velocidade angular, do overshoot e do tempo de acomodação nos ~750&nbsp;ms antes de um kill. A ideia era, antes de dizer o que é anômalo, medir o que é normal.</p>
+    <p>Não cheguei a um detector, e este texto não propõe um. Cheguei a três resultados negativos e a um limite que não é resultado de medição nenhuma. Esse último é estrutural, e vale para qualquer um que tente. Acho que valem mais do que a baseline valeria, porque os três primeiros invalidam coisas que a literatura amadora de detecção de cheat faz rotineiramente sem verificar.</p>
+    <p>Tudo é reprodutível: código aberto, e cada afirmação abaixo tem teste.</p>
+  </section>
+
+  <section>
+    <h2>Resultado 1: metade das features media a grade de amostragem, não a mira</h2>
+    <p>Matchmaking do CS2 roda a 64 tick. Torneio e FACEIT rodam a 128. Para comparar as duas populações você precisa de features que não mudem só porque a taxa de amostragem mudou. E a comparação é a mais óbvia que existe neste assunto: jogo profissional é a melhor amostra disponível de mira humana limpa.</p>
+    <p>Testei decimando as mesmas janelas de 64 para 32&nbsp;Hz. Mesma trajetória, metade das amostras. São 263 janelas pareadas, cada uma terminando num kill:</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Feature</th><th class="num">Mediana @64 Hz</th><th class="num">Mediana @32 Hz</th><th class="num">Razão</th></tr></thead>
+        <tbody>
+          <tr><td><code>snap_fraction</code></td><td class="num">0,129</td><td class="num">0,218</td><td class="num"><strong>1,69x</strong></td></tr>
+          <tr><td><code>n_peaks</code></td><td class="num">7,00</td><td class="num">4,00</td><td class="num"><strong>0,57x</strong></td></tr>
+          <tr><td><code>peak_speed_dps</code></td><td class="num">91,02</td><td class="num">76,07</td><td class="num">0,84x</td></tr>
+          <tr><td><code>path_ratio</code></td><td class="num">1,355</td><td class="num">1,339</td><td class="num">0,99x</td></tr>
+          <tr><td><code>net_disp_deg</code></td><td class="num">10,135</td><td class="num">10,103</td><td class="num">1,00x</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="draftnote">A coluna de razão é a razão das duas colunas anteriores: divida e confira. Existe um estimador melhor para isso, que é a mediana das razões janela a janela, em que cada janela é seu próprio controle e a assimetria da distribuição não entra. Ele dá 1,74 / 0,56 / 0,86 / 0,99 / 1,00 sobre as mesmas 263 janelas. Mesma conclusão, e nada aqui depende da escolha. Mas se você for comparar com outro trabalho, confira qual dos dois ele usou, porque em distribuição assimétrica os dois divergem.</p>
+    <p><code>snap_fraction</code>, que é o maior passo único dividido pelo deslocamento e uma das features mais usadas em análise amadora de aimbot, <strong>não tem limite quando dt → 0</strong>. Para trajetória suave, o maior passo é ~<code>v_max·dt</code>, então a feature é O(dt) e tende a zero conforme a taxa sobe. Não existe quantidade em tempo contínuo que ela esteja estimando: ela mede a grade.</p>
+    <p>Consequência prática: um demo 64-tick e um 128-tick dão <code>snap_fraction</code> sistematicamente diferentes <strong>para mira idêntica</strong>, e o viés se alinha exatamente com a comparação matchmaking × profissional. Acertar o <code>dt</code> não resolve. O <code>dt</code> correto dá a unidade certa, não cria um limite que não existe.</p>
+    <p><code>n_peaks</code> é pior de um jeito mais bobo: a contagem acompanha a taxa quase 1:1. A mediana de 7 picos numa janela de 750&nbsp;ms é um a cada 100&nbsp;ms, e correção sob feedback visual tem latência de 100 a 200&nbsp;ms. Estava contando quantização de sensor, não submovimento.</p>
+    <p>Adotei um critério de admissão: <strong>feature nova só entra se tiver limite bem definido quando dt → 0 e já estiver perto dele nas taxas em uso.</strong> Sobram <code>path_ratio</code>, <code>net_disp_deg</code>, <code>mean_speed_dps</code>, <code>path_deg</code>.</p>
+    <div class="callout">
+      <h3>Um cuidado, porque a explicação intuitiva está errada</h3>
+      <p><code>path_ratio</code> <strong>não</strong> é invariante por ser razão. A discretização encurta o caminho (numerador) e não mexe na distância líquida (denominador), então a razão não se protege sozinha. Ela sobrevive porque o comprimento de caminho da mira humana já convergiu a 32&nbsp;Hz. É fato empírico sobre o espectro do movimento, não garantia matemática, e vale em toda a faixa de deslocamento (0,982x abaixo de 2°, 0,995x acima de 45°).</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Interlúdio: o que sobrou, e por que ainda dá para confiar no resto</h2>
+    <p>Se metade das features media a grade, é justo perguntar se sobra alguma medida de movimento humano de verdade. Sobra uma, e é a mais forte das que eu tinha.</p>
+    <p>O modelo de dois componentes do controle motor (Woodworth, 1899; lei de Fitts) prevê que movimento dirigido a alvo tem fase balística rápida que erra sistematicamente, seguida de correção sob feedback visual. A marca mais direta disso é que o caminho percorrido excede a distância líquida. Nas 88 janelas de um demo, <code>path_ratio &gt; 1</code> em <strong>100%</strong> delas, mediana 1,35.</p>
+    <p>Cem por cento é o número que mais tranquiliza, porque <code>path_ratio &lt; 1</code> é geometricamente impossível: se o unwrap de yaw ou a distância de grande círculo estivessem errados, apareceriam violações. Não apareceu nenhuma.</p>
+    <p>Há também estrutura que não é circular. Movimentos grandes são proporcionalmente mais retos (Spearman entre deslocamento e <code>path_ratio</code> = <strong>−0,347</strong>, ambas features admissíveis). Faz sentido: a fase corretiva tem tamanho aproximadamente fixo, então pesa mais numa correção curta.</p>
+    <div class="callout">
+      <h3>E o que eu não posso mais afirmar</h3>
+      <p>O modelo prevê outras duas marcas: múltiplos submovimentos, e uma fase de acomodação antes do disparo. Eu tinha as duas confirmadas, com ≥2 picos em 94,3% das janelas e acomodação não nula em 98,9%. Só que a primeira foi medida com <code>n_peaks</code> e a segunda com <code>settle_ms</code>, que são exatamente as duas features que o Resultado 1 acabou de aposentar. <strong>Uma predição confirmada por um instrumento que mede a grade não está confirmada.</strong></p>
+      <p>Deixo isso à vista porque é o padrão de erro: a validação parecia tripla e era simples. Duas das três &ldquo;confirmações&rdquo; mediam o relógio da amostragem, não a mão de ninguém.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Resultado 2: o gerador sintético mudava de física com a taxa de amostragem</h2>
+    <p>Eu tinha um gerador de trajetórias sintéticas para testar o pipeline sem depender de demo. O tremor era assim:</p>
+    <pre><code>traj += rng.normal(0, tremor_deg, n).cumsum() * 0.3</code></pre>
+    <p>Um passeio aleatório em unidades de <strong>amostra</strong>. Variância proporcional a n. Dobrar a taxa de amostragem dobrava a excursão acumulada do tremor, em vez de resolver melhor a mesma curva.</p>
+    <p>Ou seja: não existia &ldquo;a mesma trajetória em duas grades&rdquo;. Eram dois processos estocásticos diferentes. Qualquer conclusão sobre tickrate tirada desse gerador era sobre o gerador.</p>
+    <p>Os testes passavam. Todos. Eles verificavam separação humano/aimbot a 64&nbsp;Hz, o que continua válido. Mas nunca verificaram que valesse em outra taxa, e era exatamente isso que eu precisava.</p>
+    <p>Havia também erro de calibração: o tremor era banda larga e muito mais forte que mira real. Decimando 64→32, o gerador antigo degradava <code>path_ratio</code> até 0,72x, onde mira real dá 0,982x. Um detector ajustado contra ele estaria ajustado contra o ruído errado.</p>
+    <p>Ao corrigir, apareceu um segundo caso da mesma classe: os pulsos corretivos sorteavam instante em <code>uniform(t[0], t[-1])</code>, e <code>t[-1]</code> depende do truncamento de <code>int(duration_s/dt)</code>, que dá 0,5859&nbsp;s a 128&nbsp;Hz contra 0,5781&nbsp;s a 64&nbsp;Hz. Dependência de grade pela porta dos fundos.</p>
+    <p>A lição não é &ldquo;cuidado com bug&rdquo;. É que <strong>gerador sintético é hipótese disfarçada de dado</strong>, e um teste verde contra um gerador errado é indistinguível de um teste verde contra um gerador certo.</p>
+  </section>
+
+  <section>
+    <h2>Resultado 3: contaminação come a cauda por construção</h2>
+    <p>Para saber se um limiar produz falso positivo, você precisa da cauda da distribuição limpa. A tentação é medir isso em matchmaking, onde há volume.</p>
+    <p>Não funciona, e não é questão de amostra. Contaminação a taxa ε corrompe os quantis <strong>acima de 1−ε</strong>. Com ~2% de cheaters, tudo acima do percentil 98 de uma amostra não verificada é inutilizável, porque os cheaters <em>são</em> a cauda que se quer medir. Nenhum N conserta: o quantil observado converge para o valor contaminado.</p>
+    <p>Abaixo de p98, o corpo da distribuição está limpo e é mensurável.</p>
+    <p>As duas saídas óbvias falham de formas simétricas:</p>
+    <ul>
+      <li><strong>Fonte verificada</strong> (LAN, profissional): compra pureza ao custo de validade populacional. Profissional é o extremo superior de habilidade; uma baseline tirada dali não dá o FPR de matchmaking, que é quem você rastrearia. &ldquo;Conta antiga sem ban&rdquo; é verificação fraca, porque ausência de ban ≠ limpo é a premissa do problema.</li>
+      <li><strong>Método robusto</strong>: robustez funciona <em>descontando a cauda</em>, que é exatamente o que se quer medir. Estimador aparado remove cheater e cauda limpa sem distinguir.</li>
+    </ul>
+    <p>A saída que sobra é ajustar o corpo, extrapolar a cauda com modelo explícito (valores extremos), e tratar a diferença entre cauda observada e extrapolada como o estimando, o que converte contaminação de estorvo em sinal. Com a ressalva obrigatória: <strong>FPR a 1e-4 passa a ser dominado pelo parâmetro de forma do modelo, não pelo dado.</strong> É legítimo publicar; é ilegítimo publicar sem o rótulo de &ldquo;saída de modelo&rdquo;.</p>
+
+    <h3>E há menos sinal individual do que parece</h3>
+    <p>Decompondo a variância de <code>path_ratio</code> em partida / jogador / janela, sobre 28 jogadores em 3 partidas:</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th></th><th class="num">Partida</th><th class="num">Jogador</th><th class="num">Janela</th></tr></thead>
+        <tbody>
+          <tr><td><code>path_ratio</code></td><td class="num">0,0%</td><td class="num">1,9%</td><td class="num">98,1%</td></tr>
+          <tr><td><code>snap_fraction</code></td><td class="num">0,0%</td><td class="num">8,8%</td><td class="num">91,2%</td></tr>
+          <tr><td><code>settle_ms</code></td><td class="num">0,9%</td><td class="num">0,0%</td><td class="num">99,1%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>O componente de partida é indistinguível de zero (negativo antes de truncar), o que é boa notícia: sem drift entre partidas, um limiar não se desloca. Mas o componente de <strong>jogador</strong> fica entre 2 e 9%, e os intervalos de confiança dos três incluem zero. Mais de 90% da variância é janela a janela dentro do mesmo jogador.</p>
+    <p>Com ~9 janelas por jogador numa partida, <strong>mais da metade da dispersão aparente entre jogadores é ruído de medida</strong> (84% no caso do <code>path_ratio</code>). Qualquer tabela que ordene jogadores por essas features está ordenando principalmente sorteio amostral.</p>
+  </section>
+
+  <section>
+    <h2>O limite estrutural: o tamanho do efeito é escolha do adversário</h2>
+    <p>Este não é resultado de medição nenhuma, e é por isso que não numerei junto com os outros três. É uma propriedade do problema, não do meu dado, e não some com mais coleta.</p>
+    <p><strong>Não existe um &ldquo;tamanho de efeito verdadeiro&rdquo; a estimar.</strong> Cheat não é fenômeno natural com um parâmetro fixo esperando medição. É software escrito por gente que otimiza contra detecção. O que existe é uma distribuição sobre implementações, e a ponta sofisticada dela é deliberadamente escolhida para ser pequena.</p>
+    <p>Em <code>path_ratio</code>:</p>
+    <ul>
+      <li>aimbot ingênuo → ≈1,0 contra ≈1,35 humano. <strong>5,3 desvios-padrão</strong> entre jogadores. Trivial.</li>
+      <li>cheat humanizado → calibrado para bater com o humano. Efeito ≈ 0 <strong>por construção</strong>, porque é para isso que a humanização existe.</li>
+    </ul>
+    <p>Três consequências:</p>
+    <ol>
+      <li><strong>Todo limite superior é datado.</strong> Dá para limitar o efeito dos cheats implantados hoje; não os de amanhã. O prazo de validade é o ciclo de desenvolvimento do adversário.</li>
+      <li><strong>Publicar limiar é publicar a especificação de como escapar dele.</strong> Publicar a <em>baseline</em> é seguro, porque é descrição de movimento humano, e humano não se adapta para deixar de parecer humano. Publicar o limiar não é. É por isso que este texto não traz nenhum.</li>
+      <li><strong>Sensibilidade apodrece; especificidade não.</strong> O TPR de qualquer detector decai conforme os cheats se adaptam. O FPR não, porque a distribuição humana é estável.</li>
+    </ol>
+    <p>A consequência (3) é o argumento mais forte que encontrei a favor de fazer só a baseline: o lado durável do problema é exatamente o que ela mede.</p>
+  </section>
+
+  <section>
+    <h2>O que sobra: um método reutilizável</h2>
+    <p>Se a maior parte do resultado é negativa, o que fica de utilizável?</p>
+    <p><strong>Uma bateria de aceitação de grade de amostragem.</strong> Todo o critério de admissibilidade acima pressupõe conhecer a grade. Dado de terceiro pode ter sido reamostrado, interpolado ou suavizado em qualquer ponto do pipeline, normalmente sem documentar, e dado suavizado parece dado limpo. São quatro testes, sendo que A tem duas medidas, listados do mais forte ao mais circunstancial:</p>
+    <ul>
+      <li><strong>A1, menor passo da rede de quantização.</strong> O ângulo do Source 2 vive numa rede fina: menor passo entre valores distintos = 0,000335693°, idêntico em três demos e em yaw e pitch. Qualquer média de pontos da rede a refina. Interpolação em ponto médio leva a rede/2, média móvel de 3 leva a rede/3.</li>
+      <li><strong>A2, razão de dobra.</strong> A fração de valores que cai numa rede 360/2^k dobra a cada bit de k. Detecta valores fora de qualquer rede diádica.</li>
+      <li><strong>B, autocorrelação lag-1 do passo angular.</strong> Filtro injeta memória. Teste fraco: mira humana já é autocorrelacionada (mediana de 0,40 a 0,51 entre jogadores, com dispersão individual de 0,27 a 0,77).</li>
+      <li><strong>C, completude de tick.</strong> Espaçamento constante fora de fronteira de round. Pega buraco irregular, e só isso: reamostragem <em>uniforme</em> passa ilesa, porque 1 tick em cada 2 continua sendo espaçamento constante. Quem pega esse caso é D, mais a comparação entre tickrate inferido e declarado.</li>
+      <li><strong>D, assinatura de decimação.</strong> Decimar por 2 e conferir se as razões batem com as medidas em dado cru. Usa o próprio trabalho de invariância como instrumento.</li>
+    </ul>
+    <p>O desenho de A veio de um teste negativo que me corrigiu: <strong>A2 sozinha não pega interpolação em ponto médio</strong>, porque <code>(a+b)/2</code> continua numa rede diádica, só que duas vezes mais fina, e a razão segue 2,0. Foi preciso A1.</p>
+    <p>Uma bateria que só sabe dizer &ldquo;ok&rdquo; não serve para julgar fonte de terceiro. Ela precisa de poder de rejeição demonstrado contra a corrupção específica que se teme. E aprovar significa <em>compatibilidade</em> com dado cru, não prova de crueza.</p>
+  </section>
+
+  <section>
+    <h2>O que seria preciso para ir adiante</h2>
+    <p>Sem rótulo, dá para estimar o eixo da especificidade inteiro e nada do eixo da sensibilidade. Existe um caminho que usa a contaminação como sinal, que é procurar componente de mistura na cauda de uma amostra grande não rotulada. Mas o custo depende de ε, que ninguém sabe.</p>
+    <p>Para 80% de poder contra um aimbot grosseiro, com ~3 partidas por jogador:</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th class="num">ε</th><th class="num">Jogadores</th><th class="num">Partidas</th></tr></thead>
+        <tbody>
+          <tr><td class="num">0,5%</td><td class="num">5.209</td><td class="num"><strong>1.480</strong></td></tr>
+          <tr><td class="num">1%</td><td class="num">1.468</td><td class="num">417</td></tr>
+          <tr><td class="num">2%</td><td class="num">451</td><td class="num">128</td></tr>
+          <tr><td class="num">3%</td><td class="num">240</td><td class="num"><strong>68</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>22x de variação</strong> sobre uma faixa de ε inteiramente plausível. Não dá para orçar isso de antemão; a coleta tem que ser sequencial.</p>
+  </section>
+
+  <section>
+    <h2>Limitações</h2>
+    <p>Três demos, mesmo mapa, mesmo tickrate, mesma faixa de habilidade, um jogador em comum. É a amostra mais estreita possível: &ldquo;variância de partida ≈ 0&rdquo; significa &ldquo;≈0 entre três partidas muito parecidas&rdquo;, não que mapa, tickrate ou tier não importem, e com 2 graus de liberdade um efeito moderado passaria despercebido. Nenhum demo 128-tick foi testado de ponta a ponta. Nenhum cheater confirmado existe na amostra, então nenhum número aqui tem taxa de falso positivo medida.</p>
+    <p>Nada neste texto identifica jogador, e não deve ser usado para isso.</p>
+    <footer class="colophon">
+      Código e testes: [link do repositório]. Todo número tem teste; a bateria de aceitação e suas bandas são abertas.
+    </footer>
+  </section>
+
+</div>

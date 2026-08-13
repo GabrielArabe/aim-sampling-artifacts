@@ -3,6 +3,12 @@
 Caracterização da assinatura cinemática da mira humana em Counter-Strike 2,
 a partir de demos GOTV.
 
+**Escrito:** [Três resultados negativos e um limite estrutural ao tentar medir
+mira humana em CS2](docs/post-rascunho.md). Features que mediam a taxa de
+amostragem em vez do comportamento, um gerador sintético cuja física mudava
+com `dt`, contaminação que come a cauda por construção, e por que o tamanho
+do efeito é escolha do adversário e não parâmetro da natureza.
+
 **Escopo desta fase: baseline. Não há classificador aqui, e é de propósito.**
 Antes de dizer o que é anômalo é preciso medir o que é normal. Pular essa
 etapa é o motivo de a maioria dos "detectores de cheat" amadores não

@@ -2,6 +2,10 @@
 
 *Rascunho. Números de n=3 demos de matchmaking; ver "Limitações" no fim.*
 
+> **Este arquivo é a fonte editável.** `docs/index.html` é a versão
+> renderizada que o GitHub Pages serve. Editar um sem o outro faz os dois
+> divergirem em silêncio.
+
 Comecei querendo caracterizar a assinatura cinemática da mira humana em
 Counter-Strike 2: a distribuição da velocidade angular, do overshoot e do
 tempo de acomodação nos ~750 ms antes de um kill. A ideia era, antes de
